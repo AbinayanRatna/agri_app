@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:agri_app/pages/loginpage.dart';
 import 'package:agri_app/weather/screens/home_screen_weather.dart';
+import 'package:agri_app/pages/scannerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/colors.dart';
+import 'cropfindingpage.dart';
 
 class Homescreen extends StatefulWidget {
 
@@ -82,7 +84,6 @@ class HomescreenState extends State<Homescreen> {
       ),
     ),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +228,7 @@ class HomescreenState extends State<Homescreen> {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ScannerScreen()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -258,10 +260,10 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                           padding: EdgeInsets.only(
                                               top: 20.w, bottom: 10.w),
-                                          child: Icon(Icons.edit_calendar_sharp,color: Colors.white,size: 55.w,)),
+                                          child: Icon(Icons.find_replace,color: Colors.white,size: 55.w,)),
                                       Center(
                                           child: Text(
-                                            "Prescribe",
+                                            "Disease",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18.sp,
@@ -321,7 +323,7 @@ class HomescreenState extends State<Homescreen> {
                               ),
                               InkWell(
                                 onTap: () {
-
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const CropFindingPage()));
                                 },
                                 child: Container(
                                     decoration: BoxDecoration(
@@ -357,7 +359,7 @@ class HomescreenState extends State<Homescreen> {
                                         ),
                                         Center(
                                             child: Text(
-                                              "History",
+                                              "Find Crop",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18.sp,
