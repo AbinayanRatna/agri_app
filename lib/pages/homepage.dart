@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:agri_app/pages/loginpage.dart';
+import 'package:agri_app/weather/screens/home_screen_weather.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../constants/colors.dart';
 
 class Homescreen extends StatefulWidget {
@@ -82,44 +82,6 @@ class HomescreenState extends State<Homescreen> {
       ),
     ),
   ];
-
-  // Future<void> getPrescriptionFromFirebase() async {
-  //   medicineBox.clear();
-  //   DatabaseEvent medicineEvent = await dbRefMedicine.once();
-  //   DataSnapshot medicineSnapshot = medicineEvent.snapshot;
-  //   if (medicineSnapshot.value != null) {
-  //     Map<dynamic, dynamic> medicines = medicineSnapshot.value as Map<dynamic, dynamic>;
-  //     medicines.forEach((key, value) async {
-  //       // Use null-aware operators to safely access the fields
-  //       setState(()  {
-  //         medicineName = value['medicine_name'] ?? 'Unknown';
-  //         brandName = value['brand_name'] ?? 'Unknown';
-  //         dosage = value['dosage'] ?? 'Not specified';
-  //         refill = value['refill_time'] ?? 'Not specified';
-  //         frequency = value['frequency'] ?? 'Not specified';
-  //         route = value['route'] ?? 'Not specified';
-  //         intakeTime = value['intake_time'] ?? 'Not specified';
-  //         duration = value['duration'] ?? 'Not specified';
-  //
-  //         Medicine medicineDet =Medicine(
-  //             medicineName: medicineName,
-  //             brandName: brandName,
-  //             dosage: dosage,
-  //             frequency: frequency,
-  //             intakeTime: intakeTime,
-  //             route: route,
-  //             duration: duration,
-  //             refillTimes: refill);
-  //         medicineBox.add(medicineDet);
-  //       });
-  //     });
-  //
-  //   }
-  //   setState(() {
-  //     syncAvailable='no';
-  //   });
-  //
-  // }
 
 
   @override
@@ -310,7 +272,8 @@ class HomescreenState extends State<Homescreen> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () async {
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreenWeather()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
