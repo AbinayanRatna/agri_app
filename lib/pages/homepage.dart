@@ -1,11 +1,11 @@
 import 'dart:ui';
 import 'package:agri_app/pages/loginpage.dart';
+import 'package:agri_app/weather/screens/home_screen_weather.dart';
 import 'package:agri_app/pages/scannerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../constants/colors.dart';
 import 'cropfindingpage.dart';
 
@@ -274,7 +274,8 @@ class HomescreenState extends State<Homescreen> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () async {
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreenWeather()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
