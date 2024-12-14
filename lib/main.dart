@@ -1,5 +1,7 @@
+import 'package:agri_app/pages/cropfindingpage.dart';
 import 'package:agri_app/pages/homepage.dart';
 import 'package:agri_app/pages/loginpage.dart';
+import 'package:agri_app/pages/scannerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,15 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize:  Size(375, 812), // Set according to your design specs
-        minTextAdapt: true, // Enable minimum text adaptation
+        designSize:  Size(375, 812),
+        minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
             theme: ThemeData(
               fontFamily: 'Quicksand',
             ),
-            home: const Homescreen(),
+            home:  const Homescreen(),
           );
         }
     );

@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:agri_app/pages/loginpage.dart';
+import 'package:agri_app/pages/scannerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/colors.dart';
+import 'cropfindingpage.dart';
 
 class Homescreen extends StatefulWidget {
 
@@ -82,45 +84,6 @@ class HomescreenState extends State<Homescreen> {
       ),
     ),
   ];
-
-  // Future<void> getPrescriptionFromFirebase() async {
-  //   medicineBox.clear();
-  //   DatabaseEvent medicineEvent = await dbRefMedicine.once();
-  //   DataSnapshot medicineSnapshot = medicineEvent.snapshot;
-  //   if (medicineSnapshot.value != null) {
-  //     Map<dynamic, dynamic> medicines = medicineSnapshot.value as Map<dynamic, dynamic>;
-  //     medicines.forEach((key, value) async {
-  //       // Use null-aware operators to safely access the fields
-  //       setState(()  {
-  //         medicineName = value['medicine_name'] ?? 'Unknown';
-  //         brandName = value['brand_name'] ?? 'Unknown';
-  //         dosage = value['dosage'] ?? 'Not specified';
-  //         refill = value['refill_time'] ?? 'Not specified';
-  //         frequency = value['frequency'] ?? 'Not specified';
-  //         route = value['route'] ?? 'Not specified';
-  //         intakeTime = value['intake_time'] ?? 'Not specified';
-  //         duration = value['duration'] ?? 'Not specified';
-  //
-  //         Medicine medicineDet =Medicine(
-  //             medicineName: medicineName,
-  //             brandName: brandName,
-  //             dosage: dosage,
-  //             frequency: frequency,
-  //             intakeTime: intakeTime,
-  //             route: route,
-  //             duration: duration,
-  //             refillTimes: refill);
-  //         medicineBox.add(medicineDet);
-  //       });
-  //     });
-  //
-  //   }
-  //   setState(() {
-  //     syncAvailable='no';
-  //   });
-  //
-  // }
-
 
   @override
   Widget build(BuildContext context) {
@@ -265,6 +228,7 @@ class HomescreenState extends State<Homescreen> {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ScannerScreen()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -296,10 +260,10 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                           padding: EdgeInsets.only(
                                               top: 20.w, bottom: 10.w),
-                                          child: Icon(Icons.edit_calendar_sharp,color: Colors.white,size: 55.w,)),
+                                          child: Icon(Icons.find_replace,color: Colors.white,size: 55.w,)),
                                       Center(
                                           child: Text(
-                                            "Prescribe",
+                                            "Disease",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18.sp,
@@ -358,7 +322,7 @@ class HomescreenState extends State<Homescreen> {
                               ),
                               InkWell(
                                 onTap: () {
-
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const CropFindingPage()));
                                 },
                                 child: Container(
                                     decoration: BoxDecoration(
@@ -394,7 +358,7 @@ class HomescreenState extends State<Homescreen> {
                                         ),
                                         Center(
                                             child: Text(
-                                              "History",
+                                              "Find Crop",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18.sp,

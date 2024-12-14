@@ -38,6 +38,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.16
   carousel_slider: ^5.0.0
+  tflite_flutter: ^0.11.0
+  camera: ^0.11.0+2
+  image: ^4.4.0
 
 dev_dependencies:
   flutter_test:
