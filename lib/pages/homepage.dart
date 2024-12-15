@@ -260,7 +260,7 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                           padding: EdgeInsets.only(
                                               top: 20.w, bottom: 10.w),
-                                          child: Icon(Icons.find_replace,color: Colors.white,size: 55.w,)),
+                                          child: Icon(Icons.help_outline,color: Colors.white,size: 55.w,)),
                                       Center(
                                           child: Text(
                                             "Disease",
@@ -307,10 +307,10 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                         padding: EdgeInsets.only(
                                             top: 20.w, bottom: 10.w),
-                                        child: Icon(Icons.sync,color: Colors.white,size: 55.w,),),
+                                        child: Icon(Icons.cloud,color: Colors.white,size: 55.w,),),
                                       Center(
                                           child: Text(
-                                            "Sync",
+                                            "Weather",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18.sp,
@@ -355,7 +355,7 @@ class HomescreenState extends State<Homescreen> {
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 top: 20.w, bottom: 10.w),
-                                            child: Icon(Icons.history_sharp,color: Colors.white,size: 55.w,)
+                                            child: Icon(Icons.search,color: Colors.white,size: 55.w,)
                                         ),
                                         Center(
                                             child: Text(
@@ -403,11 +403,11 @@ class HomescreenState extends State<Homescreen> {
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 top: 20.w, bottom: 10.w),
-                                            child: Icon(Icons.local_hospital,color:Colors.white,size: 55.w,)
+                                            child: Icon(Icons.shopify_rounded,color:Colors.white,size: 55.w,)
                                         ),
                                         Center(
                                             child: Text(
-                                              "Hospitals",
+                                              "Market",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18.sp,

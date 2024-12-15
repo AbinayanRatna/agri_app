@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/colors.dart';
 import 'crop_finding/classifier_crop_finding.dart';
+import 'crop_finding/getRecommendedCrops.dart';
 
 class CropFindingPage extends StatefulWidget {
   const CropFindingPage({super.key});
@@ -21,6 +22,7 @@ class CropFindingPageState extends State<CropFindingPage> {
 
   String _prediction = "";
   final CropRecommendationModel _model = CropRecommendationModel();
+
   Future<void> _predictCrop(List<double> inputs) async{
     showDialog(
       context: context,
@@ -41,6 +43,22 @@ class CropFindingPageState extends State<CropFindingPage> {
     });
     Navigator.of(context).pop();
   }
+
+  List<double> userInputs = [16, 77, 22, 31, 35, 6.5, 100]; // Replace with dynamic input
+  List<String> recommendations = [];
+
+  Future<void> fetchRecommendations() async {
+    try {
+      final result = await getRecommendedCrops(inputs);
+      setState(() {
+        recommendations = result;
+        print("recomme: $recommendations");
+      });
+    } catch (e) {
+      print('Error fetching recommendations: $e');
+    }
+  }
+
 
 
 
@@ -220,7 +238,7 @@ class CropFindingPageState extends State<CropFindingPage> {
                         if(_formKey.currentState!.validate()){
                           _formKey.currentState!.save();
 
-                          await _predictCrop(inputs);
+                          await fetchRecommendations();
 
                         }
                       },
@@ -260,7 +278,7 @@ class CropFindingPageState extends State<CropFindingPage> {
                           ),
                           Center(
                             child: Text(
-                              _prediction!=null?"$_prediction":"No Crops Found",
+                              recommendations.isNotEmpty?"${recommendations[0]}":"No Crops Found",
                               style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.bold,
