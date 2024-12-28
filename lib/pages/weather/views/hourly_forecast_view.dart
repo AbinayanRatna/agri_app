@@ -1,10 +1,12 @@
-import 'package:agri_app/weather/constants/app_colors.dart';
-import 'package:agri_app/weather/constants/text_styles.dart';
-import 'package:agri_app/weather/extensions/int.dart';
-import 'package:agri_app/weather/providers/get_hourly_forecast_provider.dart';
-import 'package:agri_app/weather/utils/get_weather_icons.dart';
+
+import 'package:agri_app/pages/weather/extensions/int.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../constants/app_colors.dart';
+import '../constants/text_styles.dart';
+import '../providers/get_hourly_forecast_provider.dart';
+import '../utils/get_weather_icons.dart';
 
 class HourlyForecastView extends ConsumerWidget {
   const HourlyForecastView({

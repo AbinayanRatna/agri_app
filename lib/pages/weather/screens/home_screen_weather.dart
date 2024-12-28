@@ -1,8 +1,7 @@
-import 'package:agri_app/constants/colors.dart';
-import 'package:agri_app/weather/constants/app_colors.dart';
-import 'package:agri_app/weather/screens/forecast_report_screen.dart';
-import 'package:agri_app/weather/services/api_helper.dart';
+
 import 'package:flutter/material.dart';
+import '../services/api_helper.dart';
+import 'forecast_report_screen.dart';
 import 'weather_screen/weather_screen.dart';
 
 class HomeScreenWeather extends StatefulWidget {
