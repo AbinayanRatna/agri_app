@@ -28,7 +28,7 @@ class _ViewItemsPageState extends State<ViewItemsPage> {
             ),
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Align elements tightly
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Positioned Header
               Padding(
@@ -46,7 +46,7 @@ class _ViewItemsPageState extends State<ViewItemsPage> {
               ),
               // Search Bar
               Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0), // No bottom padding
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
                 child: TextField(
                   controller: _searchController,
                   onChanged: (value) {
@@ -99,6 +99,7 @@ class _ViewItemsPageState extends State<ViewItemsPage> {
                         'item': data['item'],
                         'price': double.tryParse(data['price']) ?? 0.00,
                         'unit': data['unit'],
+                        'quantity': data['quantity'], // Include quantity here
                       };
                     })
                         .toList();
@@ -143,7 +144,15 @@ class _ViewItemsPageState extends State<ViewItemsPage> {
                               ),
                               Text(
                                 'Price: Rs.${data['price'].toStringAsFixed(2)} / ${data['unit']}',
-                                style: TextStyle(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'Available Quantity: ${data['quantity']} ${data['unit']}',
+                                style: TextStyle(fontSize: 14, color: Colors.black87),
                               ),
                             ],
                           ),

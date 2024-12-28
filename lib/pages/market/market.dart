@@ -71,7 +71,7 @@ class MarketScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AddItemPage()),
+                      MaterialPageRoute(builder: (context) => ItemPage()),
                     );
                   },
                   icon: Icon(Icons.sell, size: 24),
