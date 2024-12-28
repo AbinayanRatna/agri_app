@@ -76,6 +76,8 @@ class ClassifierDisease {
     int maxIndex = predictionResult.indexOf(maxElement);
 
     // Add a confidence threshold
+    print(DetectionClasses.values[maxIndex]);
+    print("\nmaxElementbefore:${maxElement}");
     const double confidenceThreshold = 240;
     if (maxElement < confidenceThreshold) {
       return DetectionClasses.nothing; // Return a default class if confidence is low
