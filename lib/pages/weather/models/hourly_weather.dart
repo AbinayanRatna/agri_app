@@ -213,7 +213,7 @@ class Rain {
   });
 
   factory Rain.fromJson(Map<String, dynamic> json) {
-    return Rain(threeHours: json['3h'] ?? 0.0);
+    return Rain(threeHours: (json['3h'] ?? 0.0).toDouble());
   }
 }
 

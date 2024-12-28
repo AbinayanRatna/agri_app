@@ -28,7 +28,7 @@ class HourlyForecastView extends ConsumerWidget {
               return HourlyForcastTile(
                 id: forecast.weather[0].id,
                 hour: forecast.dt.time,
-                temp: forecast.main.temp.round(),
+                temp: forecast.main.temp.round().toDouble(),
                 isActive: index == 0,
               );
             },
@@ -36,6 +36,9 @@ class HourlyForecastView extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) {
+        // Log the error and stack trace to the console
+        print('\n\nError: $error');
+        print('\n\nStackTrace: $stackTrace');
         return Center(
           child: Text(error.toString()),
         );
@@ -60,7 +63,7 @@ class HourlyForcastTile extends StatelessWidget {
 
   final int id;
   final String hour;
-  final int temp;
+  final double temp;
   final bool isActive;
 
   @override
@@ -100,7 +103,7 @@ class HourlyForcastTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    '$temp°',
+                    '${temp}°',
                     style: TextStyles.h3,
                   ),
                 ],
