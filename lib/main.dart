@@ -1,3 +1,4 @@
+import 'package:agri_app/firebase_options.dart';
 import 'package:agri_app/pages/cropfindingpage.dart';
 import 'package:agri_app/pages/homepage.dart';
 
@@ -12,8 +13,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               fontFamily: 'Quicksand',
             ),
-            home:  const LoginPage(),
+            home:  const Homescreen(),
           );
         }
     );

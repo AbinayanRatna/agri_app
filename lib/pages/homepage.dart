@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:agri_app/pages/loginpage.dart';
-import 'package:agri_app/weather/screens/home_screen_weather.dart';
+import 'package:agri_app/pages/market/market.dart';
 import 'package:agri_app/pages/scannerscreen.dart';
+import 'package:agri_app/pages/weather/screens/home_screen_weather.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -159,6 +160,16 @@ class HomescreenState extends State<Homescreen> {
                 .height,
             child: Stack(
               children: [
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: Opacity(
+                    opacity: 0.2,
+                    child: SvgPicture.asset(
+                      "assets/opacimage.svg",
+                    ),
+                  ),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -250,7 +261,7 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                           padding: EdgeInsets.only(
                                               top: 20.w, bottom: 10.w),
-                                          child: Icon(Icons.help_outline,color: Colors.white,size: 55.w,)),
+                                          child: Icon(Icons.find_replace,color: Colors.white,size: 55.w,)),
                                       Center(
                                           child: Text(
                                             "Disease",
@@ -297,10 +308,10 @@ class HomescreenState extends State<Homescreen> {
                                       Padding(
                                         padding: EdgeInsets.only(
                                             top: 20.w, bottom: 10.w),
-                                        child: Icon(Icons.cloud,color: Colors.white,size: 55.w,),),
+                                        child: Icon(Icons.sync,color: Colors.white,size: 55.w,),),
                                       Center(
                                           child: Text(
-                                            "Weather",
+                                            "Sync",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18.sp,
@@ -345,7 +356,7 @@ class HomescreenState extends State<Homescreen> {
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 top: 20.w, bottom: 10.w),
-                                            child: Icon(Icons.search,color: Colors.white,size: 55.w,)
+                                            child: Icon(Icons.history_sharp,color: Colors.white,size: 55.w,)
                                         ),
                                         Center(
                                             child: Text(
@@ -361,7 +372,7 @@ class HomescreenState extends State<Homescreen> {
                               ),
                               InkWell(
                                 onTap: () {
-
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => MarketScreen()));
                                 },
                                 child: Container(
                                     decoration: BoxDecoration(
@@ -393,7 +404,7 @@ class HomescreenState extends State<Homescreen> {
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 top: 20.w, bottom: 10.w),
-                                            child: Icon(Icons.shopify_rounded,color:Colors.white,size: 55.w,)
+                                            child: Icon(Icons.shop,color:Colors.white,size: 55.w,)
                                         ),
                                         Center(
                                             child: Text(

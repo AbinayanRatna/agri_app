@@ -1,11 +1,13 @@
-import 'package:agri_app/weather/constants/app_colors.dart';
-import 'package:agri_app/weather/constants/text_styles.dart';
-import 'package:agri_app/weather/extensions/datetime.dart';
-import 'package:agri_app/weather/providers/get_weekly_forecast_provider.dart';
-import 'package:agri_app/weather/utils/get_weather_icons.dart';
-import 'package:agri_app/weather/widgets/subscript_text.dart';
+
+import 'package:agri_app/pages/weather/extensions/datetime.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../constants/app_colors.dart';
+import '../constants/text_styles.dart';
+import '../providers/get_weekly_forecast_provider.dart';
+import '../utils/get_weather_icons.dart';
+import '../widgets/subscript_text.dart';
 
 class WeeklyForecastView extends ConsumerWidget {
   const WeeklyForecastView({super.key});
