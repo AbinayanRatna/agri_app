@@ -3,12 +3,17 @@ import 'package:agri_app/pages/homepage.dart';
 
 import 'package:agri_app/pages/loginpage.dart';
 import 'package:agri_app/pages/scannerscreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
+  await Firebase.initializeApp();
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               fontFamily: 'Quicksand',
             ),
-            home:  const Homescreen(),
+            home:  const LoginPage(),
           );
         }
     );

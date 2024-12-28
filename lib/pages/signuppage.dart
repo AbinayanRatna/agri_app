@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:agri_app/pages/homepage.dart';
 import 'package:agri_app/pages/loginpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -41,6 +44,36 @@ class SignupPageState extends State<SignupPage> {
         duration: const Duration(seconds: 5),
       ),
     );
+  }
+
+  // Register user with firebase
+  void _registerUser(BuildContext context) async {
+    if (_globalKey.currentState!.validate()) {
+      _globalKey.currentState!.save();
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: inputData["email"]!, password: inputData["password"]!);
+
+
+        if (kDebugMode) {
+          print('registered: ${inputData["email"]} - is added');
+        }
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const LoginPage()), (route) => route.isFirst,);
+
+      }
+      on FirebaseException catch (e) {
+        if(kDebugMode){
+          print('Error: $e');
+          showMessage(context, "Error Occurred. Try again");
+        }
+
+      }
+      catch (e) {
+        if(kDebugMode){
+          print('Error: $e');
+        }
+      }
+    }
   }
 
 
@@ -120,7 +153,9 @@ class SignupPageState extends State<SignupPage> {
                                       flex: 6,
                                       child: TextFormField(
                                         onSaved: (value) {
-                                          inputData["email"] = value!;
+                                          setState(() {
+                                            inputData["email"] = value!;
+                                          });
                                         },
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
@@ -166,7 +201,9 @@ class SignupPageState extends State<SignupPage> {
                                                 : null;
                                           },
                                           onSaved: (value) {
-                                            inputData["password"] = value!;
+                                            setState(() {
+                                              inputData["password"] = value!;
+                                            });
                                           },
                                           style: TextStyle(fontSize: 15.sp),
                                           obscureText: true,
@@ -213,10 +250,7 @@ class SignupPageState extends State<SignupPage> {
                                     fontWeight: FontWeight.bold)),
                           ),
                           onPressed: () {
-                            if (_globalKey.currentState!.validate()) {
-                              _globalKey.currentState!.save();
-
-                            }
+                           _registerUser(context);
                           },
                         ),
                       ),

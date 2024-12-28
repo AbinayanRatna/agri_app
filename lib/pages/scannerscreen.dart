@@ -19,7 +19,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
   late CameraController cameraController;
   late Interpreter interpreter;
   final classifier = ClassifierDisease();
-
+  String outputFinal="";
+  String outputFinal2="";
   bool initialized = false;
   DetectionClasses detected = DetectionClasses.nothing;
   DateTime lastShot = DateTime.now();
@@ -62,6 +63,25 @@ class _ScannerScreenState extends State<ScannerScreen> {
     if (detected != result) {
       setState(() {
         detected = result;
+        if(detected.label=="mosaic_virus"){
+          outputFinal="Mosaic virus";
+          outputFinal2="There is no cure for a plant that has a mosaic virus, so the best management solution is to prevent the spread of the disease. This can be done by disinfecting tools used in cultivation, such as plastic containers and razor blades.";
+        }else if(detected.label=="Tomato_Bacterial_Spot"){
+          outputFinal="Tomato Bacterial Spot";
+          outputFinal2="To prevent bacterial spot, you can Use certified disease-free seeds and transplants, Avoid overhead watering, Space plants adequately, with at least 18–24 inches between tomato plants, Avoid high-pressure sprays ";
+        }else if(detected.label=="leaf_mold"){
+          outputFinal="Tomato leaf mold";
+          outputFinal2="Copper products can help treat tomato leaf mold. Some copper hydroxide formulations are approved for organic use. Destroying crop residue and sanitizing the area can help reduce the number of sclerotia and inoculum load ";
+        }else if(detected.label=="early_blight"){
+          outputFinal="Tomato early blight";
+          outputFinal2="To control early blight, you can Increase air circulation by providing adequate spacing between plants, Remove any suckers that grow from the base of the plant, Apply fungicides on a 7-14 day interval as recommended on the label. ";
+        }else if(detected.label=="septoria_leaf_spot"){
+          outputFinal="Septoria leaf spot";
+          outputFinal2="You can control it by Removing and destroying leaves that show signs of infection to slow the spread of the disease, Pruning and removing lower leaves can help the foliage dry faster after it gets wet.";
+        }else if(detected.label=="two_spotted_spider_mite"){
+          outputFinal="Two spotted spider mite";
+          outputFinal2="Catching the problem early can make it easier to control. Predatory mites can be released to suppress the population of TSSM. TSSM can have up to 20 generations per year. In hot, dry weather, their life cycle can be as short as two weeks.";
+        }
       });
     }
 
@@ -79,58 +99,58 @@ class _ScannerScreenState extends State<ScannerScreen> {
       ),
       body: initialized
           ? Padding(
-              padding: EdgeInsets.only(
-                  top: 10.w, left: 10.w, right: 10.w, bottom: 10.w),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.width,
-                    width: MediaQuery.of(context).size.width,
-                    child: CameraPreview(cameraController),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.w),
-                    child: Container(
-                      width: width,
-                      height: 80.w,
-                      decoration:  BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.w)),
-                        border: Border.all(color:primaryColor,width: 2.w )
-                      ),
-                      child: Center(
-                        child: Text(
-                          detected.label,
-                          style:  TextStyle(
-                            fontSize: 20.sp,
-                            color: primaryColorLowOpacity,
-                          ),
-                        ),
-                      ),
+        padding: EdgeInsets.only(
+            top: 10.w, left: 10.w, right: 10.w, bottom: 10.w),
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
+              child: CameraPreview(cameraController),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10.w),
+              child: Container(
+                width: width,
+                height: 80.w,
+                decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.w)),
+                    border: Border.all(color:primaryColor,width: 2.w )
+                ),
+                child: Center(
+                  child: Text(
+                    detected.label,
+                    style:  TextStyle(
+                      fontSize: 20.sp,
+                      color: primaryColorLowOpacity,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.w),
-                    child: Container(
-                      width: width,
-                      height: 160.w,
-                      decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10.w)),
-                          border: Border.all(color:primaryColor,width: 2.w )
-                      ),
-                      child: Center(
-                        child: Text(
-                          diagnosis1,
-                          style:  TextStyle(
-                            fontSize: 20.sp,
-                            color: primaryColorLowOpacity,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10.w),
+              child: Container(
+                width: width,
+                height: 160.w,
+                decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.w)),
+                    border: Border.all(color:primaryColor,width: 2.w )
+                ),
+                child: Center(
+                  child: Text(
+                    outputFinal2,
+                    style:  TextStyle(
+                      fontSize: 15.sp,
+                      color: primaryColorLowOpacity,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      )
           : const Center(child: CircularProgressIndicator()),
     );
   }

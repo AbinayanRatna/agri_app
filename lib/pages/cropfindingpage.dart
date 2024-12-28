@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/colors.dart';
-import 'crop_finding/classifier_crop_finding.dart';
 import 'crop_finding/getRecommendedCrops.dart';
 
 class CropFindingPage extends StatefulWidget {
@@ -21,28 +20,6 @@ class CropFindingPageState extends State<CropFindingPage> {
   List<double> inputs=[0,0,0,0,0,0,0];
 
   String _prediction = "";
-  final CropRecommendationModel _model = CropRecommendationModel();
-
-  Future<void> _predictCrop(List<double> inputs) async{
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return const Center(
-          child: CircularProgressIndicator(
-            color: Colors.white,
-          ),
-        );
-      },
-    );
-    String result = _model.predictCrop(inputs);
-    print("result : $result");
-    print(inputs);
-    setState(() {
-      _prediction = result;
-    });
-    Navigator.of(context).pop();
-  }
 
   List<double> userInputs = [16, 77, 22, 31, 35, 6.5, 100]; // Replace with dynamic input
   List<String> recommendations = [];
@@ -58,8 +35,6 @@ class CropFindingPageState extends State<CropFindingPage> {
       print('Error fetching recommendations: $e');
     }
   }
-
-
 
 
   @override

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<List<String>> getRecommendedCrops(List<double> inputFeatures) async {
-  final url = Uri.parse('http://10.0.2.2:5000/recommend'); // Update with the server's actual URL
+  final url = Uri.parse('http://10.0.2.2:5000/recommend');
   final response = await http.post(
     url,
     headers: {'Content-Type': 'application/json'},

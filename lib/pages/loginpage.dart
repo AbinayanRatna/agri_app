@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:agri_app/pages/homepage.dart';
 import 'package:agri_app/pages/signuppage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,6 +21,43 @@ class _AdminLoginPage extends State<LoginPage> {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   Map<String, String> inputData = {};
   bool _isLoading = false;
+
+  Future<void> signIn(BuildContext context) async {
+    try{
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: inputData["email"]!, password: inputData["password"] !);
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Homescreen()));
+
+    }catch(e){
+      _showErrorDialog(context, "Incorrect credentials");
+    }
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Log In Error',
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            message,
+            style: const TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void showMessage(BuildContext context, String message) {
     double width = MediaQuery.of(context).size.width;
@@ -120,7 +159,10 @@ class _AdminLoginPage extends State<LoginPage> {
                                       flex: 6,
                                       child: TextFormField(
                                         onSaved: (value) {
-                                          inputData["email"] = value!;
+                                          setState(() {
+                                            inputData["email"] = value!;
+                                          });
+
                                         },
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
@@ -166,7 +208,9 @@ class _AdminLoginPage extends State<LoginPage> {
                                                 : null;
                                           },
                                           onSaved: (value) {
-                                            inputData["password"] = value!;
+                                            setState(() {
+                                              inputData["password"] = value!;
+                                            });
                                           },
                                           style: TextStyle(fontSize: 15.sp),
                                           obscureText: true,
@@ -215,7 +259,7 @@ class _AdminLoginPage extends State<LoginPage> {
                           onPressed: () {
                             if (_globalKey.currentState!.validate()) {
                               _globalKey.currentState!.save();
-
+                              signIn(context);
                             }
                           },
                         ),
