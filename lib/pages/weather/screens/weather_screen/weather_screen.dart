@@ -1,13 +1,12 @@
-
+import 'package:agri_app/pages/weather/constants/app_colors.dart';
+import 'package:agri_app/pages/weather/constants/text_styles.dart';
 import 'package:agri_app/pages/weather/extensions/datetime.dart';
 import 'package:agri_app/pages/weather/extensions/strings.dart';
+import 'package:agri_app/pages/weather/providers/get_current_weather_provider.dart';
+import 'package:agri_app/pages/weather/views/gradient_container.dart';
+import 'package:agri_app/pages/weather/views/hourly_forecast_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../constants/app_colors.dart';
-import '../../constants/text_styles.dart';
-import '../../providers/get_current_weather_provider.dart';
-import '../../views/gradient_container.dart';
-import '../../views/hourly_forecast_view.dart';
 import 'weather_info.dart';
 
 class WeatherScreen extends ConsumerWidget {

@@ -1,5 +1,4 @@
 import 'package:agri_app/constants/colors.dart';
-import 'package:agri_app/constants/diagnosis.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,6 +80,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
         }else if(detected.label=="two_spotted_spider_mite"){
           outputFinal="Two spotted spider mite";
           outputFinal2="Catching the problem early can make it easier to control. Predatory mites can be released to suppress the population of TSSM. TSSM can have up to 20 generations per year. In hot, dry weather, their life cycle can be as short as two weeks.";
+        }else{
+          outputFinal2="";
+          outputFinal="Nothing is detected";
         }
       });
     }

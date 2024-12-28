@@ -1,13 +1,11 @@
-
+import 'package:agri_app/pages/weather/constants/constants.dart';
+import 'package:agri_app/pages/weather/models/hourly_weather.dart';
+import 'package:agri_app/pages/weather/models/weather.dart';
+import 'package:agri_app/pages/weather/models/weekly_weather.dart';
+import 'package:agri_app/pages/weather/services/getlocator.dart';
+import 'package:agri_app/pages/weather/utils/logging.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show immutable;
-
-import '../constants/constants.dart';
-import '../models/hourly_weather.dart';
-import '../models/weather.dart';
-import '../models/weekly_weather.dart';
-import '../utils/logging.dart';
-import 'getlocator.dart';
 
 @immutable
 class ApiHelper {

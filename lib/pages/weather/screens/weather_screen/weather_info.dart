@@ -1,9 +1,7 @@
-
+import 'package:agri_app/pages/weather/constants/text_styles.dart';
 import 'package:agri_app/pages/weather/extensions/double.dart';
+import 'package:agri_app/pages/weather/models/weather.dart';
 import 'package:flutter/material.dart';
-
-import '../../constants/text_styles.dart';
-import '../../models/weather.dart';
 
 
 class WeatherInfo extends StatelessWidget {

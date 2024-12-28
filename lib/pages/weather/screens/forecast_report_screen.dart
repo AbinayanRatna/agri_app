@@ -1,12 +1,10 @@
-
+import 'package:agri_app/pages/weather/constants/app_colors.dart';
+import 'package:agri_app/pages/weather/constants/text_styles.dart';
 import 'package:agri_app/pages/weather/extensions/datetime.dart';
+import 'package:agri_app/pages/weather/views/gradient_container.dart';
+import 'package:agri_app/pages/weather/views/hourly_forecast_view.dart';
+import 'package:agri_app/pages/weather/views/weekly_forecast_view.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/app_colors.dart';
-import '../constants/text_styles.dart';
-import '../views/gradient_container.dart';
-import '../views/hourly_forecast_view.dart';
-import '../views/weekly_forecast_view.dart';
 
 
 class ForecastReportScreen extends StatelessWidget {

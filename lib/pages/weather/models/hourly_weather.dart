@@ -1,6 +1,6 @@
-
+import 'package:agri_app/pages/weather/models/weather.dart';
+// import 'weather.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'weather.dart';
 
 
 @immutable

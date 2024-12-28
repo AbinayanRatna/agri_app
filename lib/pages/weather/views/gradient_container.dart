@@ -1,7 +1,5 @@
-
+import 'package:agri_app/pages/weather/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/app_colors.dart';
 
 
 class GradientContainer extends StatelessWidget {

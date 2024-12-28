@@ -1,11 +1,8 @@
 import 'package:agri_app/firebase_options.dart';
-import 'package:agri_app/pages/cropfindingpage.dart';
 import 'package:agri_app/pages/homepage.dart';
-
 import 'package:agri_app/pages/loginpage.dart';
-import 'package:agri_app/pages/scannerscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,9 +35,27 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               fontFamily: 'Quicksand',
             ),
-            home:  const Homescreen(),
+            home:  AuthStateScreen(),
           );
         }
+    );
+  }
+}
+
+class AuthStateScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator(); // Show loading indicator
+        } else if (snapshot.hasData) {
+          return const Homescreen(); // Navigate to Home Screen if logged in
+        } else {
+          return const LoginPage(); // Navigate to Login Screen if not logged in
+        }
+      },
     );
   }
 }
