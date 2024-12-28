@@ -160,16 +160,6 @@ class HomescreenState extends State<Homescreen> {
                 .height,
             child: Stack(
               children: [
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: Opacity(
-                    opacity: 0.2,
-                    child: SvgPicture.asset(
-                      "assets/opacimage.svg",
-                    ),
-                  ),
-                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
