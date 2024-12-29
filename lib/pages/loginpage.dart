@@ -121,7 +121,7 @@ class _AdminLoginPage extends State<LoginPage> {
                     Padding(
                       padding: EdgeInsets.only(top: 35.w, bottom: 20.w),
                       child: Text(
-                        "Welcome to agri",
+                        "Welcome to Agri",
                         style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
