@@ -271,7 +271,7 @@ class SignupPageState extends State<SignupPage> {
                             style: const ButtonStyle(
                               splashFactory: NoSplash.splashFactory,
                             ),
-                            child: Text("Sign Up",
+                            child: Text("Sign In",
                                 style: TextStyle(
                                     fontSize: 15.sp,
                                     fontWeight: FontWeight.bold,
